@@ -1,0 +1,48 @@
+.product {
+  margin: 0 auto;
+  position: relative;
+  width: var( --width-product-card);
+  height: var(--heigth-product-card);
+
+  .show {
+    opacity: 0;
+    &Content{
+      display: none;
+    }
+  }
+
+  &:hover {
+    .show {
+      opacity: 1;
+      transition: opacity 0.3s;
+      &Content{
+        display: block;
+      }
+    }
+
+    .productFooter {
+      .titleContents {
+        margin-top: -50px;
+        margin-bottom: 10px;
+      }
+    }
+  }
+}
+
+.image {
+  background: rgba(0,0,0,0.3);
+  position: absolute;
+  z-index: 1;
+}
+
+.productFooter {
+  position: absolute;
+  padding: 0 12px 10px;
+  bottom: 0;
+  z-index: 2;
+  height: max-content;
+  background: linear-gradient(183.77deg, rgba(2, 2, 4, 0) 8.59%, rgba(2, 2, 4, 0.35) 56.43%, rgba(2, 2, 4, 0.9) 96.91%);
+  border-radius: 3.80805px;
+}
+
+

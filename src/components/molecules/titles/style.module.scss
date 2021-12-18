@@ -1,0 +1,28 @@
+.priceContainer {
+  display: flex;
+}
+
+.title,
+.price,
+.oldPrice {
+  color: #ffffff;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 25px;
+}
+
+.price,
+.oldPrice {
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 20px;
+  align-items: center;
+}
+
+.oldPrice {
+  margin-left: 15px;
+  text-decoration-line: line-through;
+  color: #E7E7E8;
+  opacity: 0.8;
+}

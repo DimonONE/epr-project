@@ -1,0 +1,14 @@
+@import "../../../scss/utils/mixins";
+.arrows {
+  @include dflex;
+  align-items: center;
+
+  .arrowPrev,
+  .arrowNext {
+    color: #ffffff;
+  }
+
+  .icon{
+    font-size: 32px;
+  }
+}
