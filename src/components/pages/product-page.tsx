@@ -1,4 +1,4 @@
-import React, { FC, useMemo } from 'react';
+import React, { FC } from 'react';
 import styled from './style.module.scss';
 import Component from '../organisms/cardProduct/component';
 

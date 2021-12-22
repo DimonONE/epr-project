@@ -8,7 +8,7 @@ interface IColor {
   label: string;
   className?: string;
   selected?: boolean;
-  onClick: (...args: any) => void;
+  onClick: React.MouseEventHandler<HTMLButtonElement>
 }
 
 const Color: FC<IColor> = ({ color, label, className, onClick, selected }) => {

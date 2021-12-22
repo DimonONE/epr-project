@@ -7,7 +7,7 @@ interface ISize {
   className?: string;
   disabled?: boolean;
   selected?: boolean;
-  onClick: (...args: any) => void;
+  onClick: React.MouseEventHandler<HTMLButtonElement>;
 }
 
 const Size: FC<ISize> = ({ children, className, disabled, selected, onClick }) =>

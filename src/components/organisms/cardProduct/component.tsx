@@ -1,11 +1,13 @@
-import React, { useMemo } from 'react';
+import React, { FC, useMemo } from 'react';
 import styled from './style.module.scss';
 import img from '../../../images/Rectangle.png';
 import Color from '../../molecules/colors/component';
-import Size from '../../atoms/sizes/component';
 import ContentArrows from '../../molecules/arrows/component';
 import TitleContent from '../../molecules/titles/component';
 import ButtonsEvents from '../buttonsEvents/component';
+import Share from '../../molecules/share/component';
+import { useAppDispatch, useAppSelector } from '../../../Data/hooks/hooks';
+import { productCardSlice } from '../../../Data/reducer/productСard';
 
 interface ISize { id: number, size: string }
 interface IColor { id: number, label: string, color: string }
@@ -17,8 +19,9 @@ interface CardProductType<T> {
     image: string
 }
 
-const CerdProduct = () => {
-    const [selectedSize, setSelectedSize] = React.useState<number | null>(null);
+const CerdProduct: FC = () => {
+    const { isWholeScreen } = useAppSelector((state) => state.productCard);
+    // const [selectedSize, setSelectedSize] = React.useState<number | null>(null);
     const [selectedColor, setSelectedColor] = React.useState<number | null>(null);
 
     const sizes = useMemo(() => [{ id: 1, size: 'XL' }, { id: 2, size: 'XXL' }, { id: 3, size: 'XXXL' }, { id: 4, size: 'MEGAXL', disabled: true }], []);
@@ -34,9 +37,9 @@ const CerdProduct = () => {
         setSelectedColor(id);
     };
 
-    const getSelectSizeHanlder = (id: number) => () => {
-        setSelectedSize(id);
-    };
+    // const getSelectSizeHanlder = (id: number) => () => {
+    //     setSelectedSize(id);
+    // };
 
     console.log(datas);
 
@@ -48,6 +51,9 @@ const CerdProduct = () => {
                     <div className={styled.image}>
                       <img src={card.image} alt="img" />
                     </div>
+                    {isWholeScreen && (
+                      <Share />
+                      )}
 
                     <div className={styled.show}>
                       <ButtonsEvents />
