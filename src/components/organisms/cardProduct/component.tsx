@@ -32,10 +32,10 @@ const CardProduct: FC = () => {
          []);
     const datas: CardProductType<ISize[] | IColor[]>[] = [
         { id: 1, image: img, sizes, colors },
-        // { id: 2, image: img, sizes, colors },
-        // { id: 3, image: img, sizes, colors },
-        // { id: 4, image: img, sizes, colors },
-        // { id: 5, image: img, sizes, colors },
+        { id: 2, image: img, sizes, colors },
+        { id: 3, image: img, sizes, colors },
+        { id: 4, image: img, sizes, colors },
+        { id: 5, image: img, sizes, colors },
     ];
 
     const getSelectColorHanlder = (id: number) => () => {
@@ -51,59 +51,64 @@ const CardProduct: FC = () => {
                 datas.map((card) => (
                   <div
                     key={card.id}
-                    className={styled.product}
-                    onMouseLeave={() => setWholeScreen(false)}
+                    className={styled.productContainer}
                   >
-                    <div className={styled.image}>
-                      <img src={card.image} alt="img" />
-                    </div>
-                    {wholeScreen && (
-                      <Share className={styled.show} />
+                    <div
+                      className={styled.product}
+                      onMouseLeave={() => setWholeScreen(false)}
+                    >
+                      <div className={styled.image}>
+                        <img src={card.image} alt="img" />
+                      </div>
+                      {wholeScreen && (
+                        <Share className={styled.show} />
                       )}
 
-                    <ButtonsEvents
-                      className={styled.show}
-                      wholeScreen={wholeScreen}
-                      setWholeScreen={setWholeScreen}
-                    />
-
-                    <div className={styled.productFooter}>
-                      <TitleContent
-                        title="White & Black Single Breasted Blazer & Pants"
-                        price="$301.88"
-                        oldPrice=" $350.99"
+                      <ButtonsEvents
+                        className={styled.show}
+                        wholeScreen={wholeScreen}
+                        setWholeScreen={setWholeScreen}
                       />
-                      <div className={styled.show}>
-                        <div className={styled.showContent}>
-                          <Paginate
-                            array={colors}
-                            Element={(props) => (
-                              <>
-                                <Color
-                                  onClick={getSelectColorHanlder(props.id)}
-                                  selected={props.id === selectedColor}
-                                  {...props}
-                                />
-                              </>
+
+                      <div className={styled.productFooter}>
+                        <TitleContent
+                          title="White & Black Single Breasted Blazer & Pants"
+                          price="$301.88"
+                          oldPrice=" $350.99"
+                        />
+                        <div className={styled.show}>
+                          <div className={styled.showContent}>
+                            <Paginate
+                              array={colors}
+                              countItem={3}
+                              Element={(props) => (
+                                <>
+                                  <Color
+                                    onClick={getSelectColorHanlder(props.id)}
+                                    selected={props.id === selectedColor}
+                                    {...props}
+                                  />
+                                </>
                             )}
-                          />
-                          <Paginate
+                            />
+                            <Paginate
                               // @ts-ignore
-                            array={sizes}
-                            countItem={2}
-                            Element={(props) => (
-                              <>
-                                <Size
-                                  key={props.id}
-                                  disabled={props.disabled}
-                                  onClick={getSelectSizeHanlder(props.id)}
-                                  selected={props.id === selectedSize}
-                                >
-                                  {props.size}
-                                </Size>
-                              </>
+                              array={sizes}
+                              countItem={1}
+                              Element={(props) => (
+                                <>
+                                  <Size
+                                    disabled={props.disabled}
+                                    onClick={getSelectSizeHanlder(props.id)}
+                                    selected={props.id === selectedSize}
+                                    {...props}
+                                  >
+                                    {props.size}
+                                  </Size>
+                                </>
                             )}
-                          />
+                            />
+                          </div>
                         </div>
                       </div>
                     </div>

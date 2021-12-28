@@ -1,11 +1,29 @@
+@import '../../../scss/utils/mixins';
 .product {
-  &Container{
-    width: calc(100% / 3);
+  &Container {
+    display: flex;
+    max-width: 1280px;
+    justify-content: center;
+    margin-bottom: 50px;
+
+    @media (min-width: 1280px ) {
+      width: calc(100% / 5);
+    }
+    @include mmax( 1280 ) {
+      width: calc(100% / 4);
+    }
+    @include mmax( 960 ) {
+      width: calc(100% / 3);
+    }
+    @include mmax( 720 ) {
+      width: calc(100% / 2);
+    }
+    @include mmax( 540) {
+      width: calc(100% / 1);
+    }
   }
-  //margin: 0 auto;
   position: relative;
-  //width: calc(100% / 2);
-  width: var(--width-product-card);;
+  width: var(--width-product-card);
   height: var(--heigth-product-card);
 
   .show {
@@ -34,7 +52,6 @@
 }
 
 .image {
-  background: rgba(0,0,0,0.3);
   position: absolute;
   z-index: 1;
 }
