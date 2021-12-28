@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { FC, SetStateAction, useEffect } from 'react';
 import styled from './style.module.scss';
 import EventButtons from '../../molecules/eventButtons/component';
 import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
@@ -6,36 +6,38 @@ import FavoriteIcon from '@material-ui/icons/Favorite';
 import VideocamIcon from '@material-ui/icons/Videocam';
 import ShareIcon from '@material-ui/icons/Share';
 import WholeScreen from '../../../images/icon/wholeScreen.png';
-import { useAppDispatch, useAppSelector } from '../../../Data/hooks/hooks';
-import { productCardSlice } from '../../../Data/reducer/productСard';
 
-const ButtonsEvents: FC = () => {
-    const [like, setlike] = React.useState<boolean>(false);
+interface IProps {
+    wholeScreen: boolean
+    setWholeScreen: React.Dispatch<SetStateAction<boolean>>
+    className: string
+}
 
-    const { isWholeScreen } = useAppSelector((state) => state.productCard);
-    const { wholeScreen } = productCardSlice.actions;
-    const dispatch = useAppDispatch();
+const ButtonsEvents: FC<IProps> = ({ wholeScreen, setWholeScreen, className }) => {
+    const [like, setLike] = React.useState<boolean>(false);
 
-    console.log('isWholeScreen', wholeScreen(true));
+    useEffect(() => {
+        setWholeScreen(false);
+    }, []);
+
     return (
-      <div className={styled.wrapperButtons}>
-        <EventButtons label="Video" onClick={() => setlike(!like)}>
+      <div className={`${styled.wrapperButtons} ${className}`}>
+        <EventButtons label="Video" onClick={() => false}>
           <VideocamIcon className={styled.icon} />
         </EventButtons>
 
-        <EventButtons label="Favorite" onClick={() => setlike(!like)}>
+        <EventButtons label="Favorite" onClick={() => setLike(!like)}>
           {like ? <FavoriteIcon className={styled.icon} /> :
           <FavoriteBorderIcon className={styled.icon} />}
         </EventButtons>
 
-        <EventButtons label="Favorite" onClick={() => dispatch(wholeScreen(!isWholeScreen))}>
+        <EventButtons label="Favorite" onClick={() => setWholeScreen(!wholeScreen)}>
           <img src={WholeScreen} alt="WholeScreen" />
         </EventButtons>
 
-        <EventButtons label="Share" onClick={() => setlike(!like)}>
+        <EventButtons label="Share" onClick={() => false}>
           <ShareIcon className={styled.icon} />
         </EventButtons>
-
       </div>
 );
 };

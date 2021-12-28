@@ -4,15 +4,14 @@ import EventButtons from '../eventButtons/component';
 import Color from '../colors/component';
 
 interface IProps {
-    label: string
-    onClick: React.MouseEventHandler<HTMLButtonElement>
+    className: string
 }
 
-const Share: FC = () => {
+const Share: FC<IProps> = ({ className }) => {
     const [open, setOpen] = useState(false);
 
   return (
-    <div className={styled.share}>
+    <div className={`${styled.share} ${className}`}>
       <Color
         label="color"
         className="mr-2-vw"

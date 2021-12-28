@@ -2,6 +2,7 @@ import React, { FC, useMemo } from 'react';
 import Button from '../atoms/buttons/component';
 import Size from '../atoms/sizes/component';
 import Color from '../molecules/colors/component';
+import { Link } from 'react-router-dom';
 
 const MainPage: FC = () => {
   const [selectedSize, setSelectedSize] = React.useState<number | null>(null);
@@ -45,6 +46,7 @@ const MainPage: FC = () => {
           />
         ))
       }
+      <Link to="/product" className="ml-5-vw mb-5">Product</Link>
     </>
   );
 };

@@ -1,7 +1,11 @@
 .product {
-  margin: 0 auto;
+  &Container{
+    width: calc(100% / 3);
+  }
+  //margin: 0 auto;
   position: relative;
-  width: var( --width-product-card);
+  //width: calc(100% / 2);
+  width: var(--width-product-card);;
   height: var(--heigth-product-card);
 
   .show {
